@@ -21,6 +21,14 @@ app.get('/pooltest', (req,res)=>{
     res.send(results);
   });
 });
+
+// An endpoint to test from mobile application
+app.get('/test', (req, res) =>{
+  var done = {
+    "sucess": 1
+  }
+  res.send(done);
+})
 app.listen(8083, function () {
   console.log('App listening on port 8083!');
 });
