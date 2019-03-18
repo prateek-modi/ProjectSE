@@ -1,5 +1,5 @@
 {
-  "name": "GST Guide",
+  "name": "gst_guide",
   "version": "1.0.0",
   "description": "A simple GST app",
   "scripts": {
@@ -8,12 +8,10 @@
   "author": "Divyanshu Kumar - dvkcool",
   "license": "MIT",
   "dependencies": {
-    "alert-node": "^1.1.2",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "express-handlebars": "^3.0.0",
     "fetch": "^1.1.0",
-    "morgan": "^1.9.0",
+    "mysql": "^2.16.0",
     "request": "^2.83.0",
     "request-debug": "^0.2.0"
   }
