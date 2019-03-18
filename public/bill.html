@@ -1,0 +1,70 @@
+<html>
+  <head><title>Bill page</title>
+     <meta http-equiv="refresh" content="30">
+     <style>
+       th{
+         border:solid black 1px;
+         height:25px;
+         background-color:#A4A4A4;
+         text-align:center;
+       }
+       td{
+         border:solid black 1px;
+         height:20px;
+         text-align:center;
+
+       }
+     </style>
+    <script>
+      var myVar = setInterval(myTimer, 5000);
+
+      function myTimer() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "http://localhost:8083/bill/1", true);
+        xhr.send();
+
+        xhr.onreadystatechange = processRequest;
+
+        function processRequest(e) {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+           var response = JSON.parse(xhr.responseText);
+           var headers = ["ItemId", "Quantity"];
+          //Create a HTML Table element.
+          var table = document.createElement("TABLE");
+          table.border = "1";
+
+
+          //Add the header row.
+          var row = table.insertRow(-1);
+          for (var i = 0; i < 2; i++) {
+             var headerCell = document.createElement("TH");
+             headerCell.innerHTML = headers[i];
+             row.appendChild(headerCell);
+          }
+
+          //Add the data rows.
+          for (var i = 0; i < response.length; i++) {
+             row = table.insertRow(-1);
+             var pId = row.insertCell(-1);
+             pId.innerHTML = response[i].productId;
+             var qty = row.insertCell(-1);
+             qty.innerHTML = response[i].qty;
+
+          }
+
+          var dvTable = document.getElementById("dvTable");
+          dvTable.innerHTML = "";
+          dvTable.appendChild(table);
+          }
+        }
+      }
+    </script>
+
+  </head>
+  <body>
+    <p>Innovice number <span id="inn_num"></span></p>
+    <br><br>
+    <div id="dvTable">
+    </div>
+  </body>
+</html>

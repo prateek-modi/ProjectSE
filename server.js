@@ -28,7 +28,17 @@ app.get('/test', (req, res) =>{
     "sucess": 1
   }
   res.send(done);
-})
+});
+
+// An endpoint to get items of a bill based on a bill id:
+app.get('/bill/:billId', (req,res)=>{
+  pool.query('SELECT * FROM Bill where billId = ?',[req.params.billId], (error,results,fields)=>{
+    if (error) throw error;
+    //console.log('The solution is: ', rows);
+    res.send(results);
+  })
+});
+
 app.listen(8083, function () {
   console.log('App listening on port 8083!');
 });
