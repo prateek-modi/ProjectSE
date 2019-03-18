@@ -1,0 +1,20 @@
+{
+  "name": "GST Guide",
+  "version": "1.0.0",
+  "description": "A simple GST app",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Divyanshu Kumar - dvkcool",
+  "license": "MIT",
+  "dependencies": {
+    "alert-node": "^1.1.2",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "fetch": "^1.1.0",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0",
+    "request-debug": "^0.2.0"
+  }
+}
