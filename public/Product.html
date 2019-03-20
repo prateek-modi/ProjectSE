@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="prateek.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap.css">
+		<script type="text/javascript">
+		var x = document.getElementsByClassName("pm")[0]; 
+	    </script>
 		<title>List of Products</title>
 		<style type="text/css">
 		#ProductTable{
@@ -14,18 +19,20 @@
 		table#ProductTable tr:nth-child(even){
 			background-color:#E6E6E6;
 		}
-		
+
 		th{
 			border:solid black 1px;
 			height:25px;
 			background-color:#A4A4A4;
+			text-align:center;
 		}
 		td{
 			border:solid black 1px;
 			height:20px;
+			text-align:center;
 
 		}
-	
+
 		#Width10{
 			width:10%;
 		}
@@ -60,7 +67,7 @@
 			align-items:center;
 			left:0;
 			display:none;
-			
+
 		}
 		.Product-Content{
 			width:50%;
@@ -79,21 +86,58 @@
 			margin-top:3px;
 
 		}
-		
+
 		.close{
 			top:0px;
 			font-size:2em;
 			cursor:pointer;
 			transform:rotate(45deg);
 		}
-		
+
 		</style>
 	</head>
 	<body>
+		<!-- Code for navigation bar -->
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#1">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="Project.html" class="navbar-brand">Company Name</a>
+
+			</div>
+			<!-- For Left items -->
+            <div class="collapse navbar-collapse" id="1">
+			 <ul class="nav navbar-nav">
+				<li><a href="#">What we do</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Help</a></li>
+			 </ul>
+
+			<!-- For right items -->
+
+			 <ul class="nav navbar-nav navbar-right">
+				<li><a href="prateek_signUp.html">Sign up</a></li>
+				<li><a href="Product.html">Log in</a></li>
+			 </ul>
+		   </div>
+
+		</div>
+
+	</nav>
+
+
+		<!-- Code ends here nav bar -->
+
+
 	<button id="AddProducts" onclick="AddNewProduct()">Add New Products</button><button id="EDProducts" onclick="">Edit/Delete Products</button>
-	
+
 	<table id="ProductTable" style="">
-	
+
 		<tr>
 			<th id="Width10">S.N.</th>
 			<th id="Width40">Name</th>
@@ -112,7 +156,7 @@
 		<tr>
 			<td style="text-align:center">2</td>
 			<td>Amul Cool</td>
-			<td style="text-align:center">40</td>
+			<td style="">40</td>
 			<td style="text-align:center">2.5</td>
 			<td style="text-align:center">Edit/Delete</td>
 
@@ -125,7 +169,7 @@
 			<td style="text-align:center">Edit/Delete</td>
 
 		</tr>
-	
+
 		</table>
 	<div class="NewProductPopup">
 		<div class="Product-Content">
@@ -142,19 +186,27 @@
 
 			</form>
 		</div>
-		
+
 	</div>
 	<script>
 	function AddNewProduct(){
 		document.querySelector('.NewProductPopup').style.display='flex';
 
 	};
-		
+
 	function Close(){
 		document.querySelector('.NewProductPopup').style.display="none";
 	}
 	</script>
-		
+
 	</body>
+
+	<script type="text/javascript" src="prateek.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </html>
