@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+       .format{
+         text-align:center;
+       }
+    </style>
+  </head>
+  <body>
+<form class="format" action="http://localhost:3000/addproduct/" method="get">
+  <input type="text" name="pid" value="" id="a"><br>
+  <input type="text" name="pname" value=""id="b"><br>
+  <input type="text" name="price" value=""id="c"><br>
+  <input type="text" name="gstrate" value=""id="d"><br>
+  <button type="button" name="button" onclick="send()" >Submit</button>
+</form>
+  </body>
+  <script type="text/javascript">
+    var pid = document.getElementById('a');
+    var pname = document.getElementById('b');
+    var price = document.getElementById('c');
+    var gstrate = document.getElementById('d');
+    function send(){
+      var pid = document.getElementById('a').value;
+      var pname = document.getElementById('b').value;
+      var price = document.getElementById('c').value;
+      var gstrate = document.getElementById('d').value;
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST',"http://localhost:3000/addproduct/", true);
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.onload = function () {
+      // do something to response
+      console.log(this.responseText);
+      };
+      var params = 'pid='+pid+'&pname='+pname+'&price='+price+'&gstrate='+gstrate;
+      xhr.send(params);
+    }
+      </script>
+</html>
