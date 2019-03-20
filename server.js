@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static(__dirname + '/public'));
-
 var pool = mysql.createPool(config);
 
 app.get('/pooltest', (req,res)=>{
@@ -40,13 +39,14 @@ app.get('/bill/:billId', (req,res)=>{
 });
 
 // An endpoint to add a productin a particular order id:
-app.get('/productscan/:billId/:pId', (req,res)=>{
+app.get('/productscan/:pId', (req,res)=>{
   pool.query('Insert into `Bill` values(?, ?, 1)',[req.params.billId, req.params.pId], (error,results,fields)=>{
     if (error) throw error;
     //console.log('The solution is: ', rows);
     res.send("added succesfully");
   })
 });
+
 app.listen(8083, function () {
   console.log('App listening on port 8083!');
 });
