@@ -5,11 +5,23 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap.css">
 		<script type="text/javascript">
 		var x = document.getElementsByClassName("pm")[0]; 
-		var ProductDetails = PDetails();
+		var PName = document.getElementById("ProductName");
+		var PPrice= document.getElementById("ProductPrice");
+		var PGSTSlab = document.getElementById("GstSlab");
 		function PDetails(){
-		var Name = getElementById("ProductName");
-		var Price= getElementById("ProductPrice");
-		var GSTSlab = getElementById("GstSlab");
+		var PName = document.getElementById("ProductName").value;
+		var PPrice= document.getElementById("ProductPrice").value;
+		var PGSTSlab = document.getElementById("GstSlab").value;
+		var xhr = new HMLHttpRequest();
+		xhr.open('POST',"http://localhost:3000/addproduct/",true);
+		xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onload = function(){
+		consol.log(this.responseText);
+		}
+		var ProductDetails = '&ProductName='+ProductNmae+'&ProductPrice='+ProductPrice+'&GstSlab='+GstSlab;
+
+		xhr.send(ProductDetails);
+		
 		}
 		
 	    </script>
