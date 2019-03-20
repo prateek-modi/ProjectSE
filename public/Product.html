@@ -5,6 +5,13 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap.css">
 		<script type="text/javascript">
 		var x = document.getElementsByClassName("pm")[0]; 
+		var ProductDetails = PDetails();
+		function PDetails(){
+		var Name = getElementById("ProductName");
+		var Price= getElementById("ProductPrice");
+		var GSTSlab = getElementById("GstSlab");
+		}
+		
 	    </script>
 		<title>List of Products</title>
 		<style type="text/css">
@@ -178,9 +185,9 @@
 			<form action="">
 		<h2 style="text-align:center;font-size:2em;color:black;">Add New Product</h2>
 
-			 <input type="text" placeholder="Name">
-			 <input type="text" placeholder="Price">
-			 <input type="text" placeholder="GST %">
+			 <input type="text" placeholder="Name" id="ProductName">
+			 <input type="text" placeholder="Price" id="ProductPrice">
+			 <input type="text" placeholder="GST %" id="GstSlab">
 			 <button type="submit" style="background-color:#5cb85c;border:1px solid black;border-radius:2px;height:2em;color:#fff;font-size:0.7em;">ADD</button>
 
 
