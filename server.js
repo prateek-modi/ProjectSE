@@ -61,7 +61,7 @@ app.use(function(req, res, next) {
 var mysqlConnection = mysql.createConnection({
     host:'localhost',
     user: 'root',
-    password:process.env.passoword,
+    password:'password',
     database:"gst"
   });
 
@@ -104,8 +104,6 @@ app.post('/addproduct/', (req,res)=>{
 
 //query for getting product with required productid
 app.get('/product/', (req,res)=>{
-  // console.log("id: ", req);
-  // var val = req.params.id;
 
   console.log("req body: ", req.body);
   mysqlConnection.query("SELECT * FROM products WHERE pid=?",[req.body.id], (err,rows,fields)=>{
@@ -119,4 +117,47 @@ app.get('/product/', (req,res)=>{
   })
 });
 
-//
+//query for deleting a product from DATABASE
+app.get('/deletepro/', (req,res)=>{
+  var pro = req.body.name;
+  mysqlConnection.query("DELETE FROM products WHERE pname=?",[pro],(err,rows,fields)=>{
+    if(!err){
+      console.log("product deleted");
+      res.send("deleted succesfully");
+    }else{
+      console.log(err);
+    }
+  })
+})
+
+//query  for entering bill PDetails
+app.post('/addbill/', (req,res)=>{
+  console.log("request", req.body);
+
+  var billno = req.body.billno;
+  var bdate = req.body.bdate;
+  var billamt = req.body.billamt;
+  var gst = req.body.gst;
+
+  mysqlConnection.query('INSERT INTO `bills` VALUES (?,?,?,?)',[parseInt(billno), bdate, parseInt(billamt), parseFloat(gst)], (err,rows,fields)=>{
+    if(!err){
+       res.send("added succesfully");
+    }
+    else {
+      console.log(err);
+    }
+  })
+});
+
+
+//getting the latest bill id
+app.get('/getlatest/', (req,res)=>{
+  mysqlConnection.query('SELECT * FROM bills ORDER BY billno LIMIT 1', (err,rows,fields)=>{
+    if(!err){
+       res.send(rows);
+    }
+    else {
+      console.log(err);
+    }
+  })
+})

@@ -3,28 +3,6 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="prateek.css">
 		<link rel="stylesheet" type="text/css" href="bootstrap.css">
-		<script type="text/javascript">
-		var x = document.getElementsByClassName("pm")[0]; 
-		var PName = document.getElementById("ProductName");
-		var PPrice= document.getElementById("ProductPrice");
-		var PGSTSlab = document.getElementById("GstSlab");
-		function PDetails(){
-		var PName = document.getElementById("ProductName").value;
-		var PPrice= document.getElementById("ProductPrice").value;
-		var PGSTSlab = document.getElementById("GstSlab").value;
-		var xhr = new HMLHttpRequest();
-		xhr.open('POST',"http://localhost:3000/addproduct/",true);
-		xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-		xhr.onload = function(){
-		consol.log(this.responseText);
-		}
-		var ProductDetails = '&ProductName='+ProductNmae+'&ProductPrice='+ProductPrice+'&GstSlab='+GstSlab;
-
-		xhr.send(ProductDetails);
-		
-		}
-		
-	    </script>
 		<title>List of Products</title>
 		<style type="text/css">
 		#ProductTable{
@@ -117,7 +95,7 @@
 	</head>
 	<body>
 		<!-- Code for navigation bar -->
-			<nav class="navbar navbar-inverse navbar-fixed-top">
+			<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#1">
@@ -128,18 +106,18 @@
 				<a href="Project.html" class="navbar-brand">Company Name</a>
 
 			</div>
-			<!-- For Left items -->
-            <div class="collapse navbar-collapse" id="1">
+			<! For Left items -->
+            <!-- <div class="collapse navbar-collapse" id="1">
 			 <ul class="nav navbar-nav">
 				<li><a href="#">What we do</a></li>
 				<li><a href="#">About us</a></li>
 				<li><a href="#">Contact</a></li>
 				<li><a href="#">Help</a></li>
-			 </ul>
+			 </ul> -->
 
 			<!-- For right items -->
 
-			 <ul class="nav navbar-nav navbar-right">
+			 <!-- <ul class="nav navbar-nav navbar-right">
 				<li><a href="prateek_signUp.html">Sign up</a></li>
 				<li><a href="Product.html">Log in</a></li>
 			 </ul>
@@ -147,8 +125,8 @@
 
 		</div>
 
-	</nav>
-
+	</nav> -->
+ -->
 
 		<!-- Code ends here nav bar -->
 
@@ -200,9 +178,7 @@
 			 <input type="text" placeholder="Name" id="ProductName">
 			 <input type="text" placeholder="Price" id="ProductPrice">
 			 <input type="text" placeholder="GST %" id="GstSlab">
-			 <button type="submit" style="background-color:#5cb85c;border:1px solid black;border-radius:2px;height:2em;color:#fff;font-size:0.7em;">ADD</button>
-
-
+			 <button type="submit" style="background-color:#5cb85c;border:1px solid black;border-radius:2px;height:2em;color:#fff;font-size:0.7em;" onclick="PDetails()">ADD</button>
 			</form>
 		</div>
 
@@ -220,7 +196,24 @@
 
 	</body>
 
-	<script type="text/javascript" src="prateek.js"></script>
+	<script type="text/javascript">
+	function PDetails(){
+	var PName = document.getElementById("ProductName").value;
+	var PPrice= document.getElementById("ProductPrice").value;
+	var PGSTSlab = document.getElementById("GstSlab").value;
+	console.log("pname: ", PName+ PPrice+PGSTSlab);
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST',"http://localhost:3000/addproduct/",true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+	xhr.onload = function(){
+	   consol.log(this.responseText);
+	}
+	//pid to be provided by dvk
+	var ProductDetails = 'pid='+123+'&pname='+PName+'&price='+PPrice+'&gstrate='+PGSTSlab;
+
+	xhr.send(ProductDetails);
+}
+	</script>
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
