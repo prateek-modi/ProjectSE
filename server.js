@@ -61,7 +61,7 @@ app.use(function(req, res, next) {
 var mysqlConnection = mysql.createConnection({
     host:'localhost',
     user: 'root',
-    password:'password',
+    password:process.env.passoword,
     database:"gst"
   });
 
